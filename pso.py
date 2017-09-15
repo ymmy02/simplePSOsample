@@ -1,13 +1,15 @@
 import random
 import copy
 import numpy as np
+import matplotlib.pyplot as plt
 
 #############
 # Constants #
 #############
 DIM = 2
 POPULATION = 10
-LOOPMAX = 100
+LOOPMAX = 10
+SKIP = 1
 STT = -5.0
 END = 5.0
 W = 0.5
@@ -84,6 +86,14 @@ def main():
     for particle in swarm:
       particle.lbest = best_partice.pos.copy()
     
+    ## Output
+    if loopcount % SKIP == 0:
+      plt.clf()
+      plt.xlim(STT,END)
+      plt.ylim(STT,END)
+      for particle in swarm:
+        plt.scatter(particle.pos[0], particle.pos[1], c="blue", marker="o")
+      plt.savefig("fig" + str(loopcount+1).zfill(3) + ".png")
     loopcount += 1
     
   # Output
