@@ -49,7 +49,7 @@ def main():
   # Initialize
   swarm = []
   for _ in range(POPULATION):
-    pos = np.random.rand(DIM)*10 - 5
+    pos = np.random.rand(DIM)*(END-STT) + STT
     fitness = evaluate(pos)
     particle = Particle(pos, fitness)
     swarm.append(particle)
